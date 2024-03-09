@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="map.css">
+    <link rel="icon" type="image/x-icon" href="icon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
+    <title>SafeNav</title>
+</head>
+<body>
+    <!-- Your content will go here -->
+    <div class="container-wrapper">
+        <!-- Left side containers -->
+        <div class="left-container-group">
+            <div class="left-container-1">
+                <img src="Safe.png" alt="Labels" class="image">
+            </div>
+            <div class="left-container-2">
+                <div class="content-wrapper">
+                    <h2>Get Directions</h2>
+                    <div class="location-inputs">
+                        <input id="origin" type="text" placeholder="Enter your start location">
+                        <input id="destination" type="text" placeholder="Enter your destination">
+                    </div>
+                    <button class="get-directions">Get Directions</button>
+                </div>
+            </div>
+            <div class="left-container-3">
+                    <span type="text">Time</span>
+                    <div id="currentTime"></div>
+                    <script>
+                        function updateTime() {
+                            // Create a new Date object
+                            var now = new Date();
+
+                            // Extract hours, minutes, and seconds
+                            var hours = now.getHours();
+                            var minutes = now.getMinutes();
+                            var seconds = now.getSeconds();
+
+                            // Pad single digit minutes and seconds with leading zeros
+                            minutes = minutes < 10 ? '0' + minutes : minutes;
+                            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+                            // Display the time in the div element
+                            document.getElementById('currentTime').textContent = hours + ':' + minutes + ':' + seconds;
+                            }
+
+                            // Call updateTime every second (1000 milliseconds)
+                            setInterval(updateTime, 1000);
+
+                            // Call updateTime initially to display the time immediately
+                            updateTime();
+                    </script>
+            </div>
+            <div class="left-container-4">
+                <!-- Contact icons container -->
+                <div class="contact-icons">
+                    <style>
+                        .contact-icons {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 20px;
+                        }
+                        .contact-icons i {
+                            font-size: 40px;
+                            margin: 0 20px;
+                            cursor: pointer;
+                            color: #333;
+                        }
+                    </style>
+                    <!-- Call John Doe -->
+                    <a href="tel:9880737876">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <!-- Message Jane Doe -->
+                    <a href="sms:9880737876">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <!-- Police station icon -->
+                    <a href="tel:100">
+                        <i class="fas fa-shield-alt"></i>
+                    </a>
+                </div>
+                
+            </div>
+            <div class="left-container-5">
+                
+                <style>
+                   .button-container {
+                    text-align: center;
+                    margin-top: 50px;
+                    }
+                  .popup {
+                  display: none;
+                  position: fixed;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  background-color: #fff;
+                  padding: 20px;
+                  border: 2px solid #333;
+                  border-radius: 5px;
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                  z-index: 1000;
+                  }
+                </style>
+                <div class="button-container">
+                    <button onclick="showSafePlaces()">Safe Exits</button>
+                </div>
+
+                <div class="popup" id="popup">
+                    <h2>Safe Places nearby</h2>
+                    <p>
+                        <a href="Web.html" id="Exits">Police Stations</a>
+                        <a href="Web.html" id="Exits">Hospitals</a>
+                        <a href="Web.html" id="Exits">Metro Stations</a>
+                        <a href="Web.html" id="Exits">Malls</a>
+                    </p>
+                    <button onclick="closePopup()">Close</button>
+                </div>
+
+                <script>
+                    function showSafePlaces() {
+                    // Display the popup
+                    var popup = document.getElementById('popup');
+                    popup.style.display = 'block';
+                    }
+
+                    function closePopup() {
+                    // Close the popup
+                    var popup = document.getElementById('popup');
+                    popup.style.display = 'none';
+                    }
+                </script>
+            </div>
+        </div>
+        <!-- Big container on the right -->
+        <div class="big-container"></div>
+    </div>
+    
+    <script src="map.js"></script>
+</body>
+</html>
+
+
